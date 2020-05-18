@@ -7,30 +7,29 @@ defmodule ExonumClient.MixProject do
       version: "0.0.1",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
+      description: description(),
+      package: package(),
       deps: deps()
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
-  def application do
+
+  defp package do
     [
-      extra_applications: [:logger]
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
+      maintainers: ["Michael Popsuev"],
+      licenses: ["Apache 2.0"],
+      links: %{
+        "GitHub" => "https://github.com/sheb-gregor/elixir-exonum",
+        "Exonum Framework" => "https://github.com/exonum/exonum"
+      }
     ]
   end
 
   defp description do
     """
-    A set of tools for building robust applications with RabbitMQ.
+    Elixir client for the Exonum Framework. This client is base on Python Client made by Exonum Team.
     """
-  end
-
-  defp package do
-    [
-      files: ["lib", "mix.exs", "README*"],
-      maintainers: ["Michael Popsuev"],
-      licenses: ["Apache 2.0"],
-      links: %{"GitHub" => "https://github.com/sheb-gregor/elixir-exonum"}
-    ]
   end
 
   defp docs do
@@ -41,9 +40,17 @@ defmodule ExonumClient.MixProject do
     ]
   end
 
+  # Run "mix help compile.app" to learn about applications.
+  def application do
+    [
+      extra_applications: [:logger]
+    ]
+  end
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]
